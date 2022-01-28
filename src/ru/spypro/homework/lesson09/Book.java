@@ -1,9 +1,11 @@
 package ru.spypro.homework.lesson09;
 
 public class Book {
-    String titleBook;
-    int yearBook;
-    Author author;
+    private final String titleBook;
+    private int yearBook;
+
+
+    private final Author author;
 
     public Book(String titleBook, int yearBook, Author author) {
         this.titleBook = titleBook;
@@ -12,20 +14,44 @@ public class Book {
     }
 
 
-    public void setTitleBook(String titleBook) {
+/*    public void setTitleBook(String titleBook) { // не будет работать т.к. модификатор доступа private
         this.titleBook = titleBook;
-    }
+    }*/
 
     public void setYearBook(int yearBook) {
         this.yearBook = yearBook;
-    }
+    } //сеттер для того, чтобы потом перезаписать год
 
     public int getYearBook() {
         return yearBook;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public Author getAuthor() {
+        return author;
+    }
+
+    public String getTitleBook() {
+        return titleBook;
+    }
+
+    /*    public void setAuthor(Author author) { // не будет работать т.к. модификатор доступа private
+            this.author = author;
+        }*/
+    public String toString() {
+        return titleBook + " " + yearBook;
+    }
+
+    public boolean equals(Object other) {
+        if (this.getTitleBook() != other.getTitleBook()) {
+            return false;
+        }
+        Book bookOne = (Book) other;
+        return titleBook.equals(bookOne.titleBook);
+    }
+
+    @Override
+    public int hashCode() {
+        return Object.hash(titleBook);
     }
 }
 

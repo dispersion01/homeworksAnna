@@ -1,12 +1,12 @@
 package ru.spypro.homework.lesson09;
 
 public class Author {
-//    объявиили переменные
-    String nameAuthor;
+    //    объявиили переменные
+    private final String nameAuthor;
     String lastnameAuthor;
 
-//    даем возможность создавать объекты
-Author(String nameAuthor, String lastnameAuthor) { // конструктор
+    //    даем возможность создавать объекты
+    public Author(String nameAuthor, String lastnameAuthor) { // конструктор
         this.nameAuthor = nameAuthor;
         this.lastnameAuthor = lastnameAuthor;
     }
@@ -18,4 +18,31 @@ Author(String nameAuthor, String lastnameAuthor) { // конструктор
     public String getLastnameAuthor() {
         return lastnameAuthor;
     }
+
+
+
+    public String toString() {
+        return nameAuthor + " " + lastnameAuthor;
+    }
+
+
+    public boolean equals(Object other) {
+
+
+        Author authorOne = (Author) other.getLastnameAuthor();
+        if (this.getLastnameAuthor() != other.getLastnameAuthor()) {
+            return false;
+        }
+
+        return this.lastnameAuthor.equals(authorOne.lastnameAuthor);
+    }
+
+
+
+    @Override
+    public int hashCode() {
+        return Object.hash(lastnameAuthor);
+    }
+
 }
+
