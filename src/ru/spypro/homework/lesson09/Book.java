@@ -42,10 +42,10 @@ public class Book {
     }
 
     public boolean equals(Object other) {
-        if (this.getTitleBook() != other.getTitleBook()) {
+        Book bookOne = (Book) other;
+        if (this.getTitleBook() != ((Book) other).getTitleBook()) {
             return false;
         }
-        Book bookOne = (Book) other;
         return titleBook.equals(bookOne.titleBook);
     }
 

@@ -29,8 +29,8 @@ public class Author {
     public boolean equals(Object other) {
 
 
-        Author authorOne = (Author) other.getLastnameAuthor();
-        if (this.getLastnameAuthor() != other.getLastnameAuthor()) {
+        Author authorOne = (Author) other;
+        if (this.getLastnameAuthor() != ((Author) other).lastnameAuthor) {
             return false;
         }
 
@@ -41,6 +41,7 @@ public class Author {
 
     @Override
     public int hashCode() {
+
         return Object.hash(lastnameAuthor);
     }
 
