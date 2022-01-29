@@ -1,5 +1,7 @@
 package ru.spypro.homework.lesson09;
 
+import java.util.Objects;
+
 public class Book {
     private final String titleBook;
     private int yearBook;
@@ -41,17 +43,17 @@ public class Book {
         return titleBook + " " + yearBook;
     }
 
-    public boolean equals(Object other) {
-        Book bookOne = (Book) other;
-        if (this.getTitleBook() != ((Book) other).getTitleBook()) {
-            return false;
-        }
-        return titleBook.equals(bookOne.titleBook);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return yearBook == book.yearBook && Objects.equals(titleBook, book.titleBook) && Objects.equals(author, book.author);
     }
 
     @Override
     public int hashCode() {
-        return Object.hash(titleBook);
+        return Objects.hash(titleBook, yearBook, author);
     }
 }
 
